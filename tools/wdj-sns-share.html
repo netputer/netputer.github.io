@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <title>豌豆荚 &middot; 社交分享链接生成器</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">豌豆荚 &middot; 社交分享链接生成器</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="col-sm-9">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="share-link" class="col-sm-2 control-label">链接地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control share-link" id="share-link" name="share-link" placeholder="将自动添加 utm_medium=sns&amp;utm_source=[weibo|qzone|tqq|renren]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="share-content" class="col-sm-2 control-label">文案内容</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control share-content" id="share-content" name="share-content" rows="8" placeholder="建议 120 字以内"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="share-pic" class="col-sm-2 control-label">图片地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control share-pic" id="share-pic" name="share-pic" placeholder="建议宽度 440px 以上">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分享平台</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox"><label><input type="checkbox" class="share-site" value="weibo" checked="checked"> 新浪微博</label></div>
+                            <div class="checkbox"><label><input type="checkbox" class="share-site" value="qzone" checked="checked"> QQ 空间</label></div>
+                            <div class="checkbox"><label><input type="checkbox" class="share-site" value="tqq" checked="checked"> 腾讯微博</label></div>
+                            <div class="checkbox"><label><input type="checkbox" class="share-site" value="renren" checked="checked"> 人人网</label></div>
+                            <div class="checkbox"><label><input type="checkbox" class="share-site" value="twitter" checked="checked"> Twitter</label></div>
+                            <div class="checkbox"><label><input type="checkbox" class="share-site" value="facebook" checked="checked"> Facebook</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">生成链接</button>
+                            <button type="button" class="btn btn-default js-btn-restore">还原上次设置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>效果预览</label>
+                    <div class="share-preview">
+                        <ul>
+                            <li>暂无预览</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="share-code">获取代码</label>
+                    <textarea class="form-control share-code" id="share-code" rows="6" placeholder="暂无代码"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <p>Lovely made by NetPuter</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/jquery-url-parser/2.3.1/purl.min.js"></script>
+
+    <script type="text/javascript">
+    $(function () {
+        var $link = $('.share-link');
+        var $content = $('.share-content');
+        var $pic = $('.share-pic');
+        var $previewList = $('.share-preview ul');
+        var $code = $('.share-code');
+
+        var names = {
+            weibo : '新浪微博',
+            qzone : ' QQ 空间',
+            tqq : '腾讯微博',
+            renren : '人人网',
+            twitter : ' Twitter',
+            facebook : ' Facebook'
+        };
+
+        var links = {
+            weibo : 'http://service.weibo.com/share/share.php?appkey=1483181040&relateUid=1727978503&url={1}&title={2}&pic={3}',
+            qzone : 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={1}&desc={2}&pics={3}&site=豌豆荚',
+            tqq : 'http://share.v.t.qq.com/index.php?c=share&a=index&url={1}&appkey=100273333&pic={3}&assname=wandoujia&title={2}',
+            renren : 'http://widget.renren.com/dialog/share?resourceUrl={1}&srcUrl={1}&description={2}&pic={3}',
+            twitter : 'https://twitter.com/intent/tweet?original_referer={1}&related=wandoujia&text={2}&url={1}&via=wandoujia',
+            facebook : 'https://www.facebook.com/sharer/sharer.php?app_id=265004820250785&u={1}'
+        }; // 1-链接地址 / 2-文案内容 / 3-图片地址
+
+        var addTracking = function (url, source) {
+            if (!source) {
+                return url;
+            }
+
+            var result = $.url(url).attr();
+
+            var queryArray = result.query.split('&');
+
+            $.extend(queryArray, [
+                'utm_medium=sns',
+                'utm_source=' + source
+            ]);
+
+            result.query = queryArray.join('&');
+
+            if (!result.path) {
+                result.path = '/';
+            }
+
+            url = result.protocol + '://' + result.authority + result.path;
+
+            if (!!result.query) {
+                url = url + '?' + result.query;
+            }
+
+            if (!!result.fragment) {
+                url = url + '#' + result.fragment;
+            }
+
+            return url;
+        };
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            var $sites = $('.share-site:checked');
+            var generateAnchors = [];
+            var generateDOMs = [];
+
+            if ((!!$link.val() && !!$content.val() && $sites.length > 0) === false) {
+                alert('请填写链接地址、文案内容、分享平台');
+                return;
+            }
+
+            if (!!window.localStorage) {
+                window.localStorage.setItem('share-settings', JSON.stringify({
+                    'link' : $link.val(),
+                    'content' : $content.val(),
+                    'pic' : $pic.val()
+                }));
+            }
+
+            $sites.each(function (index, site) {
+                var generateLinks;
+                var name = $(this).attr('value');
+
+                generateLinks = links[name].replace(/\{1\}/ig, encodeURIComponent(addTracking($link.val(), name)))
+                                           .replace(/\{2\}/ig, encodeURIComponent($content.val()))
+                                           .replace(/\{3\}/ig, encodeURIComponent($pic.val()));
+
+                var anchor = $('<a>').attr({
+                    href : generateLinks,
+                    target : '_default'
+                }).text('分享到' + names[name]);
+
+                generateAnchors.push(anchor[0].outerHTML);
+                generateDOMs.push($('<li>').html(anchor));
+            });
+
+            $previewList.html(generateDOMs);
+            $code.text(generateAnchors.join(' | '));
+        });
+
+        $('.js-btn-restore').on('click', function () {
+            if (!!window.localStorage) {
+                var settings = JSON.parse(window.localStorage.getItem('share-settings'));
+
+                if (!!settings) {
+                    $link.val(settings.link);
+                    $content.val(settings.content);
+                    $pic.val(settings.pic);
+                }
+            }
+        });
+
+        // TODO: 文案需要区分不同平台而显示
+    });
+    </script>
+</body>
+</html>
