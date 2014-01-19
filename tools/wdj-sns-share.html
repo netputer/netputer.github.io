@@ -111,30 +111,32 @@
 
             var result = $.url(url).attr();
 
-            var queryArray = result.query.split('&');
+            result.path = (function (path) {
+                return !!path ? path : '/';
+            }(result.path));
 
-            $.extend(queryArray, [
-                'utm_medium=sns',
-                'utm_source=' + source
-            ]);
+            result.query = (function (query) {
+                var queryObj = !query ? {} : JSON.parse('{"' + decodeURI(query).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
 
-            result.query = queryArray.join('&');
+                $.extend(queryObj, {
+                    'utm_medium' : 'sns',
+                    'utm_source' : source
+                });
 
-            if (!result.path) {
-                result.path = '/';
-            }
+                return JSON.stringify(queryObj).replace(/":"/g, '=').replace(/","/g, '&').replace(/\\"/g, '"').replace(/\{"|"\}/g, '');
+            }(result.query));
 
-            url = result.protocol + '://' + result.authority + result.path;
+            var newUrl = result.protocol + '://' + result.authority + result.path;
 
             if (!!result.query) {
-                url = url + '?' + result.query;
+                newUrl = newUrl + '?' + result.query;
             }
 
             if (!!result.fragment) {
-                url = url + '#' + result.fragment;
+                newUrl = newUrl + '#' + result.fragment;
             }
 
-            return url;
+            return newUrl;
         };
 
         $('form').on('submit', function (e) {
