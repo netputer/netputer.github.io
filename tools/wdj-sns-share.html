@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">生成链接</button>
+                            <button type="submit" class="btn btn-primary" disabled="disabled">生成链接</button>
                             <button type="button" class="btn btn-default js-btn-restore">还原上次设置</button>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
             }
         });
 
-        // TODO: 文案需要区分不同平台而显示
+        $('form button[type=submit]').prop('disabled', false);
     });
     </script>
 </body>
