@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <title>Coin Compass Price</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <style type="text/css">
+        .row {
+            margin-bottom: 40px;
+        }
+
+        .row-price {
+            height: 140px;
+        }
+
+        .row-chart {
+            height: 320px;
+        }
+
+        .xrpt-widget-display {
+            min-width: 25rem !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Coin Compass Price</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row row-price">
+            <div class="col-sm-12">
+                <div id="price-gko" style="width: 100%; text-align: center; margin: 16px 0 6px;"></div>
+            </div>
+        </div>
+        <div class="row row-chart">
+            <div class="col-sm-12">
+                <div id="chart-gko" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div class="row row-chart">
+            <div class="col-sm-12">
+                <div id="chart-xnf" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div class="row row-chart">
+            <div class="col-sm-12">
+                <div id="chart-you" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div class="row row-chart">
+            <div class="col-sm-12">
+                <div id="chart-mrh" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="//api.xrpio.com/js/build/graph.js"></script>
+    <script type="text/javascript" src="//api.xrpio.com/js/build/widget.js"></script>
+    <script type="text/javascript">
+        XRPTOOLS.widget.init('price-gko', '20ZRWEbn1nxQyGJazh4OtXX7LR7A28rZK', {
+            defaultCurrency:'xrp',
+            showCredit: false
+        });
+
+        XRPTOOLS.graph.init('chart-gko', 'GKO_20ZRWEbn1nxQyGJazh4OtXX7LR7A28rZK', 'combined', {
+            title: 'GKO',
+            ylabel: 'XRP per GKO',
+            labels: ['x','XRP'],
+            colors: ['#067097'],
+            rangeSelectorPlotStrokeColor: '#067097',
+            rangeSelectorPlotFillColor: '#067097',
+            rollPeriod: 7,
+            customBars: true,
+            fillGraph: false
+        });
+
+        XRPTOOLS.graph.init('chart-xnf', 'XNF_2IbbZ49IAIaVetoT2GFKhbyBCPXsN0PCM', 'combined', {
+            title: 'XNF',
+            ylabel: 'XRP per XNF',
+            labels: ['x','XRP'],
+            colors: ['#067097'],
+            rangeSelectorPlotStrokeColor: '#067097',
+            rangeSelectorPlotFillColor: '#067097',
+            rollPeriod: 7,
+            customBars: true,
+            fillGraph: false
+        });
+
+        XRPTOOLS.graph.init('chart-you', 'YOU_1egQi3UA1weSpF1iBYceNai7oMrLDpBAI', 'combined', {
+            title: 'YOU',
+            ylabel: 'XRP per YOU',
+            labels: ['x','XRP'],
+            colors: ['#067097'],
+            rangeSelectorPlotStrokeColor: '#067097',
+            rangeSelectorPlotFillColor: '#067097',
+            rollPeriod: 7,
+            customBars: true,
+            fillGraph: false
+        });
+
+        XRPTOOLS.graph.init('chart-mrh', 'MRH_2x74ZZxy0vuKDKXEHflBmOBambMty8uIw', 'combined', {
+            title: 'MRH',
+            ylabel: 'XRP per MRH',
+            labels: ['x','XRP'],
+            colors: ['#067097'],
+            rangeSelectorPlotStrokeColor: '#067097',
+            rangeSelectorPlotFillColor: '#067097',
+            rollPeriod: 7,
+            customBars: true,
+            fillGraph: false
+        });
+
+    </script>
+</body>
+</html>
