@@ -44,17 +44,22 @@
         </div>
         <div class="row row-chart">
             <div class="col-sm-12">
-                <div id="chart-xnf" style="width: 100%;"></div>
-            </div>
-        </div>
-        <div class="row row-chart">
-            <div class="col-sm-12">
                 <div id="chart-you" style="width: 100%;"></div>
             </div>
         </div>
         <div class="row row-chart">
             <div class="col-sm-12">
+                <div id="chart-lik" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div class="row row-chart">
+            <div class="col-sm-12">
                 <div id="chart-mrh" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div class="row row-chart">
+            <div class="col-sm-12">
+                <div id="chart-xnf" style="width: 100%;"></div>
             </div>
         </div>
     </div>
@@ -79,9 +84,9 @@
             fillGraph: false
         });
 
-        XRPTOOLS.graph.init('chart-xnf', 'XNF_2IbbZ49IAIaVetoT2GFKhbyBCPXsN0PCM', 'combined', {
-            title: 'XNF',
-            ylabel: 'XRP per XNF',
+        XRPTOOLS.graph.init('chart-you', 'YOU_1egQi3UA1weSpF1iBYceNai7oMrLDpBAI', 'combined', {
+            title: 'YOU',
+            ylabel: 'XRP per YOU',
             labels: ['x','XRP'],
             colors: ['#067097'],
             rangeSelectorPlotStrokeColor: '#067097',
@@ -91,11 +96,11 @@
             fillGraph: false
         });
 
-        XRPTOOLS.graph.init('chart-you', 'YOU_1egQi3UA1weSpF1iBYceNai7oMrLDpBAI', 'combined', {
-            title: 'YOU',
-            ylabel: 'XRP per YOU',
-            labels: ['x','XRP'],
-            colors: ['#067097'],
+        XRPTOOLS.graph.init('chart-lik', 'LIK_VnT4CZYMW64yX6INDpmp8jjIJNGaMxbO', 'combined', {
+            title: 'LIK',
+            ylabel: 'XRP per LIK',
+            labels: ["x","XRP"],
+            colors: ["#067097"],
             rangeSelectorPlotStrokeColor: '#067097',
             rangeSelectorPlotFillColor: '#067097',
             rollPeriod: 7,
@@ -115,6 +120,17 @@
             fillGraph: false
         });
 
+        XRPTOOLS.graph.init('chart-xnf', 'XNF_2IbbZ49IAIaVetoT2GFKhbyBCPXsN0PCM', 'combined', {
+            title: 'XNF',
+            ylabel: 'XRP per XNF',
+            labels: ['x','XRP'],
+            colors: ['#067097'],
+            rangeSelectorPlotStrokeColor: '#067097',
+            rangeSelectorPlotFillColor: '#067097',
+            rollPeriod: 7,
+            customBars: true,
+            fillGraph: false
+        });
     </script>
 </body>
 </html>
