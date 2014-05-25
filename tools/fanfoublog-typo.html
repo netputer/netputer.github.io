@@ -60,7 +60,7 @@
                 .replace(/^(\s)*$/gim, '') // 过滤多余空格
                 .replace(/“/gim, '「') // 排版
                 .replace(/”/gim, '」')
-                .replace(/^([^\s]*) (.*)$/gim, '$2 [@$1]');
+                .replace(/^([^\s]*) (.*)$/gim, '$2 via @$1');
 
             content.select();
         }
