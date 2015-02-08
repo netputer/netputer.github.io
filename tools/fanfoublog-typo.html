@@ -68,7 +68,6 @@
                 .replace(/(.*)咪米姆(.*)/gim, '') // Bio 说自己都是转的消息
                 .replace(/(.*)教父他爹(.*)/gim, '') // fanfou.com/kevinchian 基本都是通过 享拍微博通 发布
                 .replace(/(.*)随便丸丸(.*)/gim, '') // fanfou.com/丸丸 基本都是通过 享拍微博通 发布
-                .replace(/(.*)春燈公子(.*)/gim, '') // fanfou.com/aristotle 不在同一条消息中包括转发标记，也没有通过回复将转自的消息关联起来，没有精力去追查，只能直接过滤掉
 
                 .replace(/^(\s)*$/gim, '') // 过滤多余空格
                 .replace(/“|【|『/gim, '「') // 替换符号
