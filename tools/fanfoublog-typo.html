@@ -38,43 +38,7 @@
                 .replace(/(.*)(知乎|谷歌地图|搞笑语录|搞笑短信|热点语录)(.*)/gim, '') // 过滤营销号
 
                 // 过滤抄袭号，如无注明，原因则为该消息在发布前就已出现在其它地方
-                .replace(/(.*)钢板樱桃(.*)/gim, '') // 「当我讨厌一个人的时候」(Kfp5m_bqmyY)
-                .replace(/(.*)形散神更散(.*)/gim, '') // 「从第一次来北京实习到正式工作」(aQ4Xbj8yFNQ)
-                .replace(/(.*)乌龙院乌龙面(.*)/gim, '') // 「真正有趣的男子」(p8wltxprK3A)
-                .replace(/(.*)马冇冇(.*)/gim, '') // 「朋友为试验自家狗对他的依恋程度」(2zND0KZEx14)
-                .replace(/(.*)左堂堂(.*)/gim, '') // 「从前有一只丑小鸭」(lwiN-RBSTSg)
-                .replace(/(.*)沙宣(.*)/gim, '') // 「丑小鸭里有这么一句话」(HOPdJ3Odqpg)
-                .replace(/(.*)腿毛小姐(.*)/gim, '') // 「想念是无可奈何的分泌物」(0UH-6QD6rPk)
-                .replace(/(.*)湘味小白菜(.*)/gim, '') // 「以前我觉得安全感是爱人秒回的信息」(911GKhkuDvY)
-                .replace(/(.*)哆啦细胞(.*)/gim, '') // 「如果晚上不应该吃东西」(PpM15ynCRKA)
-                .replace(/(.*)野小合(.*)/gim, '') // 「司机问我听歌不」(zNAZd7Qgr3w)
-                .replace(/(.*)集念(.*)/gim, '') // 「这世界是你的遗嘱」(pSi0FrtpHEs)
-                .replace(/(.*)看见旧时光(.*)/gim, '') // 「从医学角度看」(z1Vqh-d2VCM)
-                .replace(/(.*)鹿先森(.*)/gim, '') // 「我去过很多地方」(wxmZWtTQYq4)
-                .replace(/(.*)狐不悔(.*)/gim, '') // 「人有三样东西」(1ewRXViU6pI)
-                .replace(/(.*)她夏(.*)/gim, '') // 「我渴望一生被人收藏好」(-6eWZ17x9ZM)
-                .replace(/(.*)王小初(.*)/gim, '') // 「清晨让你想到第一个人和夜晚想到最后一个人」(s_ZZSWmZS3U)
-                .replace(/(.*)拐彎(.*)/gim, '') // 「马浩汉，他说不管他在哪里拉屎」(mxHqSSx3TjU)
-                .replace(/(.*)为爱皮(.*)/gim, '') // 「你越来越冷漠」(IFrs35luNCg)
-                .replace(/(.*)良久囍(.*)/gim, '') // 「想念是突然断掉的烟」(ZDEIXEeOuZ4)
-                .replace(/(.*)地火(.*)/gim, '') // 「以貌取人，绝对科学」(hQUNGJujWds)
-                .replace(/(.*)性交(.*)/gim, '') // 「她的不发达的乳」(ZfwAyFHHfWA)
-                .replace(/(.*)糖矢(.*)/gim, '') // 「记得按时喝酒，不舒服多抽烟」(yHJauSrtFVc)
-                .replace(/(.*)H\.K\.\.\.\.\.\.(.*)/gim, '') // 「不要评价别人的容貌」(g81mml-bS2c)
-                .replace(/(.*)胖大海甜的(.*)/gim, '') // 「在水里火里汤里啤酒里冒着热气期待」(sbVRi7gP7L4)
-                .replace(/(.*)乔兮(.*)/gim, '') // 「我们要互相亏欠」(AeL9b88YQz4)
-                .replace(/(.*)海绵大叔舒克(.*)/gim, '') // 「你把性格交给星座」(QUpphQRYPss)
-                .replace(/(.*)欢里个欢(.*)/gim, '') // 「真心喜欢过的人没法做朋友」(U2Edes_410U)
-                .replace(/(.*)三碗君(.*)/gim, '') // 「阴天，在不开灯的房间」(4qBNpG1s_jo)
-                .replace(/(.*)非正经黄老邪(.*)/gim, '') // 「同学会筛掉了飞得过于高的」(FQamixAjWZo)
-                .replace(/(.*)星不星(.*)/gim, '') // 「当你我不小心又想起她」(xsAoTYUR_CM)
-                // .replace(/(.*)旧恋人(.*)/gim, '') // 「你是很迷人」(7ugmNklfYVU)
-                // .replace(/(.*)大萌没有Ecup(.*)/gim, '') // 「如果做爱时体验到了真正的接纳」(-XDFbqztgzM)
-                .replace(/(.*)正了巴经(.*)/gim, '') // Bio 说自己都是转的消息
-                .replace(/(.*)咪米姆(.*)/gim, '') // Bio 说自己都是转的消息
-                .replace(/(.*)教父他爹(.*)/gim, '') // fanfou.com/kevinchian 基本都是通过 享拍微博通 发布
-                .replace(/(.*)随便丸丸(.*)/gim, '') // fanfou.com/丸丸 基本都是通过 享拍微博通 发布
-                .replace(/(.*)春燈公子(.*)/gim, '') // fanfou.com/aristotle 不在同一条消息中包括转发标记，没有精力去追查，只能直接过滤掉
+                // .replace(/(.*)昵称(.*)/gim, '') // 「消息内容」(ID)
 
                 .replace(/^(\s)*$/gim, '') // 过滤多余空格
                 .replace(/“|【|『/gim, '「') // 替换符号
