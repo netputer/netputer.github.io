@@ -32,7 +32,7 @@
             var result = {};
 
             regexResult.forEach(function (item) {
-                var itemValue = item.split('\n');
+                var itemValue = item.split(/\s/);
 
                 if (!result[itemValue[1]]) {
                     result[itemValue[1]] = [];
