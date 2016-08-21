@@ -27,7 +27,7 @@
         var $content = document.getElementById('content');
 
         function process (e) {
-            var regexResult = $content.value.match(/(\w{4}-\w{6}-\w{4})\s+(\$[\d\.]+)/g);
+            var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})\s+(\$[\d\.]+)/g);
 
             var result = {};
 
