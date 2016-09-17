@@ -30,7 +30,7 @@
 
     <script type="text/javascript">
         var $content = document.getElementById('content');
-        var canCopy = document.queryCommandSupported && document.queryCommandSupported('copy');
+        var canCopy = 0 && document.queryCommandSupported && document.queryCommandSupported('copy');
 
         if (canCopy) {
             document.querySelector('button').innerText = '提取并复制'
