@@ -32,12 +32,12 @@
         var $content = document.getElementById('content');
 
         function process (e) {
-            var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})\s+(.[0-9\.\,]+)/g);
+            var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})\s+(.{0,2}[0-9\.\,]+.{0,2})/g);
 
             var result = {};
 
             regexResult.forEach(function (item) {
-                var itemValue = item.split(/\s/);
+                var itemValue = item.split(/[\n\r]/);
 
                 if (!result[itemValue[1]]) {
                     result[itemValue[1]] = [];
