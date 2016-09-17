@@ -30,6 +30,11 @@
 
     <script type="text/javascript">
         var $content = document.getElementById('content');
+        var canCopy = document.queryCommandSupported && document.queryCommandSupported('copy');
+
+        if (canCopy) {
+            document.querySelector('button').innerText = '提取并复制'
+        }
 
         function process (e) {
             var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})\s+(.{0,2}[0-9\.\,]+.{0,2})/g);
@@ -60,6 +65,10 @@
 
             $content.value = output.join('\n');
             $content.select();
+
+            if (canCopy) {
+                document.execCommand('copy');
+            }
         }
     </script>
 
