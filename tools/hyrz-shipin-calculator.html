@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <title>火影忍者手游 &middot; 饰品战力计算器</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <style type="text/css">
+    select {
+      min-width: 120px !important;
+      font-size: 12px !important;
+    }
+
+    @media only screen and (min-width: 768px) {
+      select {
+        -webkit-appearance: none !important;
+      }
+    }
+
+    input {
+      font-size: 12px !important;
+    }
+
+    .input-group-addon {
+      border-left-width: 0 !important;
+      border-right-width: 0 !important;
+    }
+
+    .modal-body {
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">火影忍者手游 &middot; 饰品战力计算器</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">iOS 微信 20 区东龙联盟专享</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group text-center">请输入第一个饰品的相关数据</div>
+          <div class="form-group">
+            <div class="input-group">
+                <select name="first-alpha-shuxing" class="form-control">
+                  <option value="none" selected>选择属性</option>
+                  <option value="shengming" >生命</option>
+                  <option value="shengming-washed">洗炼的生命</option>
+                  <option value="gongji">攻击</option>
+                  <option value="gongji-washed">洗炼的攻击</option>
+                  <option value="fangyu">防御</option>
+                  <option value="fangyu-washed">洗炼的防御</option>
+                  <option value="baoji">暴击</option>
+                  <option value="baoji-washed">洗炼的暴击</option>
+                  <option value="kangbao">抗暴</option>
+                  <option value="kangbao-washed">洗炼的抗暴</option>
+                </select>
+                <span class="input-group-addon">:</span>
+                <input type="tel" name="first-alpha-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <span class="input-group-addon">+</span>
+                <input type="tel" name="first-alpha-jiacheng" value="" class="form-control" placeholder="强化加成" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+                <select name="first-beta-shuxing" class="form-control">
+                  <option value="none" selected>选择属性</option>
+                  <option value="shengming">生命</option>
+                  <option value="shengming-washed">洗炼的生命</option>
+                  <option value="gongji">攻击</option>
+                  <option value="gongji-washed">洗炼的攻击</option>
+                  <option value="fangyu">防御</option>
+                  <option value="fangyu-washed">洗炼的防御</option>
+                  <option value="baoji">暴击</option>
+                  <option value="baoji-washed">洗炼的暴击</option>
+                  <option value="kangbao">抗暴</option>
+                  <option value="kangbao-washed">洗炼的抗暴</option>
+                </select>
+                <span class="input-group-addon">:</span>
+                <input type="tel" name="first-beta-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <span class="input-group-addon">+</span>
+                <input type="tel" name="first-beta-jiacheng" value="" class="form-control" placeholder="强化加成" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+                <select name="first-gamma-shuxing" class="form-control">
+                  <option value="none" selected>选择属性</option>
+                  <option value="shengming">生命</option>
+                  <option value="shengming-washed">洗炼的生命</option>
+                  <option value="gongji">攻击</option>
+                  <option value="gongji-washed">洗炼的攻击</option>
+                  <option value="fangyu">防御</option>
+                  <option value="fangyu-washed">洗炼的防御</option>
+                  <option value="baoji">暴击</option>
+                  <option value="baoji-washed">洗炼的暴击</option>
+                  <option value="kangbao">抗暴</option>
+                  <option value="kangbao-washed">洗炼的抗暴</option>
+                </select>
+                <span class="input-group-addon">:</span>
+                <input type="tel" name="first-gamma-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <span class="input-group-addon">+</span>
+                <input type="tel" name="first-gamma-jiacheng" value="" class="form-control" placeholder="强化加成" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group text-center">请输入第二个饰品的相关数据</div>
+          <div class="form-group">
+            <div class="input-group">
+                <select name="second-alpha-shuxing" class="form-control">
+                  <option value="none" selected>选择属性</option>
+                  <option value="shengming">生命</option>
+                  <option value="shengming-washed">洗炼的生命</option>
+                  <option value="gongji">攻击</option>
+                  <option value="gongji-washed">洗炼的攻击</option>
+                  <option value="fangyu">防御</option>
+                  <option value="fangyu-washed">洗炼的防御</option>
+                  <option value="baoji">暴击</option>
+                  <option value="baoji-washed">洗炼的暴击</option>
+                  <option value="kangbao">抗暴</option>
+                  <option value="kangbao-washed">洗炼的抗暴</option>
+                </select>
+                <span class="input-group-addon">:</span>
+                <input type="tel" name="second-alpha-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <span class="input-group-addon">+</span>
+                <input type="tel" name="second-alpha-jiacheng" value="" class="form-control" placeholder="强化加成" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+                <select name="second-beta-shuxing" class="form-control">
+                  <option value="none" selected>选择属性</option>
+                  <option value="shengming">生命</option>
+                  <option value="shengming-washed">洗炼的生命</option>
+                  <option value="gongji">攻击</option>
+                  <option value="gongji-washed">洗炼的攻击</option>
+                  <option value="fangyu">防御</option>
+                  <option value="fangyu-washed">洗炼的防御</option>
+                  <option value="baoji">暴击</option>
+                  <option value="baoji-washed">洗炼的暴击</option>
+                  <option value="kangbao">抗暴</option>
+                  <option value="kangbao-washed">洗炼的抗暴</option>
+                </select>
+                <span class="input-group-addon">:</span>
+                <input type="tel" name="second-beta-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <span class="input-group-addon">+</span>
+                <input type="tel" name="second-beta-jiacheng" value="" class="form-control" placeholder="强化加成" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+                <select name="second-gamma-shuxing" class="form-control">
+                  <option value="none" selected>选择属性</option>
+                  <option value="shengming">生命</option>
+                  <option value="shengming-washed">洗炼的生命</option>
+                  <option value="gongji">攻击</option>
+                  <option value="gongji-washed">洗炼的攻击</option>
+                  <option value="fangyu">防御</option>
+                  <option value="fangyu-washed">洗炼的防御</option>
+                  <option value="baoji">暴击</option>
+                  <option value="baoji-washed">洗炼的暴击</option>
+                  <option value="kangbao">抗暴</option>
+                  <option value="kangbao-washed">洗炼的抗暴</option>
+                </select>
+                <span class="input-group-addon">:</span>
+                <input type="tel" name="second-gamma-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <span class="input-group-addon">+</span>
+                <input type="tel" name="second-gamma-jiacheng" value="" class="form-control" placeholder="强化加成" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 form-group">
+          <button type="button" class="btn btn-primary btn-lg btn-block" onclick="process()" disabled>计算</button>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-xs-6">
+          <button class="btn btn-default btn-block">清空表单</button>
+        </div>
+        <div class="col-xs-6">
+          <button class="btn btn-default btn-block">使用演示数据</button>
+        </div>
+      </div> -->
+    </form>
+  </div>
+
+  <div class="modal fade" id="resultModal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+          <h4 class="modal-title">计算结果</h4>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.slim.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/3.2.0/js/modal.min.js"></script>
+
+  <script type="text/javascript">
+    var SHENGMING_FACTOR = 1.0015;
+    var GONGJI_FACTOR = 3.4999;
+    var FANGYU_FACTOR = 11.5902;
+    var BAOJI_FACTOR = 5.9982;
+    var KANGBAO_FACTOR = 10.0178;
+
+    var ATTRIBUTE_FACTOR_MAP = {
+      'none': 0,
+      'shengming': SHENGMING_FACTOR,
+      'shengming-washed': SHENGMING_FACTOR,
+      'gongji': GONGJI_FACTOR,
+      'gongji-washed': GONGJI_FACTOR,
+      'fangyu': FANGYU_FACTOR,
+      'fangyu-washed': FANGYU_FACTOR,
+      'baoji': BAOJI_FACTOR,
+      'baoji-washed': BAOJI_FACTOR,
+      'kangbao': KANGBAO_FACTOR,
+      'kangbao-washed': KANGBAO_FACTOR
+    };
+
+    var ATTRIBUTE_NAME_MAP = {
+      'none': '未填',
+      'shengming': '生命',
+      'shengming-washed': '生命',
+      'gongji': '攻击',
+      'gongji-washed': '攻击',
+      'fangyu': '防御',
+      'fangyu-washed': '防御',
+      'baoji': '暴击',
+      'baoji-washed': '暴击',
+      'kangbao': '抗暴',
+      'kangbao-washed': '抗暴'
+    };
+
+    var $resultModal = $('#resultModal');
+    var $resultModalBody = $('#resultModal .modal-body');
+    var $firstAlphaShuxing = document.querySelector('[name=first-alpha-shuxing]');
+    var $firstAlphaYuanshi = document.querySelector('[name=first-alpha-yuanshi]');
+    var $firstAlphaJiacheng = document.querySelector('[name=first-alpha-jiacheng]');
+    var $firstBetaShuxing = document.querySelector('[name=first-beta-shuxing]');
+    var $firstBetaYuanshi = document.querySelector('[name=first-beta-yuanshi]');
+    var $firstBetaJiacheng = document.querySelector('[name=first-beta-jiacheng]');
+    var $firstGammaShuxing = document.querySelector('[name=first-gamma-shuxing]');
+    var $firstGammaYuanshi = document.querySelector('[name=first-gamma-yuanshi]');
+    var $firstGammaJiacheng = document.querySelector('[name=first-gamma-jiacheng]');
+    var $secondAlphaShuxing = document.querySelector('[name=second-alpha-shuxing]');
+    var $secondAlphaYuanshi = document.querySelector('[name=second-alpha-yuanshi]');
+    var $secondAlphaJiacheng = document.querySelector('[name=second-alpha-jiacheng]');
+    var $secondBetaShuxing = document.querySelector('[name=second-beta-shuxing]');
+    var $secondBetaYuanshi = document.querySelector('[name=second-beta-yuanshi]');
+    var $secondBetaJiacheng = document.querySelector('[name=second-beta-jiacheng]');
+    var $secondGammaShuxing = document.querySelector('[name=second-gamma-shuxing]');
+    var $secondGammaYuanshi = document.querySelector('[name=second-gamma-yuanshi]');
+    var $secondGammaJiacheng = document.querySelector('[name=second-gamma-jiacheng]');
+
+    function generateAccessory(name, attributes) {
+      var accessory = {};
+
+      var totalPower = 0;
+      var basePower = 0;
+      var tempTypeStr = '';
+
+      accessory.name = name;
+
+      accessory.attributes = attributes.map(function (attribute, index) {
+        attribute.name = ATTRIBUTE_NAME_MAP[attribute.type];
+        attribute.factor = ATTRIBUTE_FACTOR_MAP[attribute.type];
+        attribute.total = attribute.base + attribute.addition;
+        attribute.totalPower = attribute.total * attribute.factor;
+        attribute.basePower = attribute.base * attribute.factor;
+
+        totalPower += attribute.totalPower;
+        basePower += attribute.basePower;
+        tempTypeStr += attribute.type + '|';
+
+        return attribute;
+      });
+
+      var washedAttribute = accessory.attributes.find(function (attribute) {
+        return attribute.type.indexOf('washed') > -1;
+      });
+
+      var worstAttribute = accessory.attributes.reduce(function (prev, cur) {
+        return prev.basePower < cur.basePower ? prev : cur;
+      });
+
+      accessory.meta = {
+        totalPower: totalPower,
+        basePower: basePower,
+
+        noneCount: tempTypeStr.split('none').length - 1,
+        washedCount: tempTypeStr.split('washed').length - 1,
+
+        washedIndex: accessory.attributes.indexOf(washedAttribute),
+        worstIndex: accessory.attributes.indexOf(worstAttribute),
+
+        noWashedBasePower: washedAttribute ? basePower - washedAttribute.basePower : basePower,
+        noWorstBasePower: worstAttribute ? basePower - worstAttribute.basePower : basePower,
+      };
+
+      return accessory;
+    }
+
+    function formatNumber(number) {
+      return number.toFixed(0);
+    }
+
+    function process() {
+      var firstAccessory = generateAccessory('一号饰品', [{
+        type: $firstAlphaShuxing.value,
+        base: parseInt($firstAlphaYuanshi.value, 10) || 0,
+        addition: parseInt($firstAlphaJiacheng.value, 10) || 0
+      }, {
+        type: $firstBetaShuxing.value,
+        base: parseInt($firstBetaYuanshi.value, 10) || 0,
+        addition: parseInt($firstBetaJiacheng.value, 10) || 0
+      }, {
+        type: $firstGammaShuxing.value,
+        base: parseInt($firstGammaYuanshi.value, 10) || 0,
+        addition: parseInt($firstGammaJiacheng.value, 10) || 0
+      }]);
+
+      var secondAccessory = generateAccessory('二号饰品', [{
+        type: $secondAlphaShuxing.value,
+        base: parseInt($secondAlphaYuanshi.value, 10) || 0,
+        addition: parseInt($secondAlphaJiacheng.value, 10) || 0
+      }, {
+        type: $secondBetaShuxing.value,
+        base: parseInt($secondBetaYuanshi.value, 10) || 0,
+        addition: parseInt($secondBetaJiacheng.value, 10) || 0
+      }, {
+        type: $secondGammaShuxing.value,
+        base: parseInt($secondGammaYuanshi.value, 10) || 0,
+        addition: parseInt($secondGammaJiacheng.value, 10) || 0
+      }]);
+
+      console.log(firstAccessory);
+      console.log(secondAccessory);
+
+      if (firstAccessory.meta.noneCount === 3) {
+        return alert('出错啦：一号饰品的属性还没选择');
+      }
+
+      if (firstAccessory.meta.washedCount > 1) {
+        return alert('出错啦：一号饰品的洗练属性超过一个');
+      }
+
+      if (secondAccessory.meta.washedCount > 1) {
+        return alert('出错啦：二号饰品的洗练属性超过一个');
+      }
+
+      var sentences = [];
+      sentences.push('一号饰品的目前战力：' + formatNumber(firstAccessory.meta.totalPower));
+      sentences.push('二号饰品的目前战力：' + formatNumber(secondAccessory.meta.totalPower));
+      sentences.push('');
+
+      var firstAttrType;
+      var firstComparePower;
+
+      if (firstAccessory.meta.washedCount > 0) {
+        firstAttrType = '洗练属性';
+        firstComparePower = firstAccessory.meta.noWashedBasePower;
+      } else {
+        firstAttrType = '最差属性';
+        firstComparePower = firstAccessory.meta.noWorstBasePower;
+      }
+
+      var secondAttrType;
+      var secondComparePower;
+
+      if (secondAccessory.meta.washedCount > 0) {
+        secondAttrType = '洗练属性';
+        secondComparePower = secondAccessory.meta.noWashedBasePower;
+      } else {
+        secondAttrType = '最差属性';
+        secondComparePower = secondAccessory.meta.noWorstBasePower;
+      }
+
+      var conditionSentences = [
+        '（假设一号饰品的' + firstAttrType,
+        '和二号饰品的' + secondAttrType,
+        '都可以洗成最强暴击',
+        '那么同时去掉加成和这两个最强暴击后）'
+      ];
+
+      sentences.push(conditionSentences.join('，'));
+      sentences.push('');
+      sentences.push('一号饰品不计加成的真实战力：' + formatNumber(firstComparePower));
+      sentences.push('二号饰品不计加成的真实战力：' + formatNumber(secondComparePower));
+      sentences.push('');
+
+      var selectedAccessory = firstComparePower > secondComparePower ? firstAccessory : secondAccessory;
+      var selectedAccessoryComment;
+
+      if (selectedAccessory.meta.washedCount > 0) {
+        selectedAccessoryComment = '继续洗练，洗出最强暴击';
+      } else {
+        selectedAccessoryComment = '将' + selectedAccessory.attributes[selectedAccessory.meta.worstIndex].name + '（最差属性）洗成最强暴击';
+      }
+
+      sentences.push('（以下建议仅供参考）');
+      sentences.push('');
+      sentences.push('选择建议：' + selectedAccessory.name);
+      sentences.push('洗练建议：' + selectedAccessoryComment);
+
+      $resultModalBody.html(sentences.join('\n'));
+      $resultModal.modal();
+    }
+
+    $(function () {
+      $('button').prop('disabled', false);
+    });
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); // jshint ignore:line
+
+    ga('create', 'UA-10113841-3', 'netputer.github.io');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
