@@ -30,11 +30,7 @@
       white-space: pre-line;
     }
 
-    .modal-body-promo {
-      margin: 40px 0 20px;
-    }
-
-    .modal-body-promo img {
+    .modal-body img {
       width: 160px;
     }
   </style>
@@ -199,7 +195,7 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <button type="button" class="btn btn-default btn-block">原理讲解</button>
+          <button type="button" class="btn btn-default btn-block" id="button-theory">原理讲解</button>
         </div>
       </div>
     </form>
@@ -215,9 +211,28 @@
         <div class="modal-body">
           <div class="modal-body-result"></div>
           <div class="modal-body-promo text-center">
-            <h6 class="text-primary">喜欢吗？扫码帮作者众筹暗部鼬吧</h6>
-            <img src="/images/qr-money.png" />
+            <p>&nbsp;</p>
+            <p>喜欢吗？扫码帮作者众筹暗部鼬吧</p>
+            <p><img src="/images/qr-money.png" /></p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="theory-modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">原理讲解</h4>
+        </div>
+        <div class="modal-body">
+          <p>战力 = 生命 * 1.0015 + 攻击 * 3.4999 + 防御 * 11.5902 + 暴击 * 5.9982 + 抗暴 * 10.0178</p>
+          <p>以上公式由作者对 iOS 微信 20 区的 6 位忍者的战力、生命、攻击、防御、暴击、抗暴进行五元一次方程组求解得出。</p>
+          <p>&nbsp;</p>
+          <p class="text-center">有更好的算法？扫码和作者交流</p>
+          <p class="text-center"><img src="/images/qr-profile.png" /></p>
         </div>
       </div>
     </div>
@@ -262,8 +277,10 @@
         'kangbao-washed': '抗暴'
       };
 
+      var $buttonTheory = $('#button-theory');
       var $buttonSubmit = $('#button-submit');
       var $buttonDemo = $('#button-demo');
+      var $theoryModal = $('#theory-modal');
       var $resultModal = $('#result-modal');
       var $resultModalBody = $('#result-modal .modal-body-result');
       var $firstAlphaShuxing = $('[name=first-alpha-shuxing]');
@@ -338,8 +355,6 @@
       }
 
       $buttonDemo.on('click', function (e) {
-        e.preventDefault();
-
         $firstAlphaShuxing.val('baoji-washed');
         $firstAlphaYuanshi.val('3226');
         $firstAlphaJiacheng.val('2904');
@@ -358,6 +373,10 @@
         $secondGammaShuxing.val('fangyu');
         $secondGammaYuanshi.val('799');
         $secondGammaJiacheng.val('');
+      });
+
+      $buttonTheory.on('click', function () {
+        $theoryModal.modal();
       });
 
       $buttonSubmit.on('click', function () {
