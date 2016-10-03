@@ -212,7 +212,7 @@
           <div class="modal-body-result"></div>
           <div class="modal-body-promo text-center">
             <p>&nbsp;</p>
-            <p>喜欢吗？扫码帮作者众筹暗部鼬吧</p>
+            <p>喜欢吗？扫码帮作者众筹暗部鼬</p>
             <p><img src="/images/qr-money.png" /></p>
           </div>
         </div>
@@ -459,14 +459,14 @@
 
         sentences.push(conditionSentences.join('，'));
         sentences.push('');
-        sentences.push('第一个饰品不计强化的真实战力：' + formatNumber(firstComparePower));
-        sentences.push('第二个饰品不计强化的真实战力：' + formatNumber(secondComparePower));
+        sentences.push('第一个饰品不计强化的保底战力：' + formatNumber(firstComparePower));
+        sentences.push('第二个饰品不计强化的保底战力：' + formatNumber(secondComparePower));
         sentences.push('');
 
         var betterAccessory = firstComparePower > secondComparePower ? firstAccessory : secondAccessory;
 
         var accessorySelectComment;
-        accessorySelectComment = betterAccessory.name + '，战力领先 ' + formatNumber(Math.abs(firstComparePower - secondComparePower));
+        accessorySelectComment = betterAccessory.name + '，保底战力领先 ' + formatNumber(Math.abs(firstComparePower - secondComparePower));
 
         var accessoryWashComment;
         if (betterAccessory.meta.washedCount > 0) {
