@@ -66,7 +66,7 @@
                   <option value="kangbao-washed">洗练的抗暴</option>
                 </select>
                 <span class="input-group-addon">:</span>
-                <input type="tel" name="first-alpha-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <input type="tel" name="first-alpha-yuanshi" value="" class="form-control" placeholder="基础数值" />
                 <span class="input-group-addon">+</span>
                 <input type="tel" name="first-alpha-jiacheng" value="" class="form-control" placeholder="强化加成" />
             </div>
@@ -88,7 +88,7 @@
                   <option value="kangbao-washed">洗练的抗暴</option>
                 </select>
                 <span class="input-group-addon">:</span>
-                <input type="tel" name="first-beta-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <input type="tel" name="first-beta-yuanshi" value="" class="form-control" placeholder="基础数值" />
                 <span class="input-group-addon">+</span>
                 <input type="tel" name="first-beta-jiacheng" value="" class="form-control" placeholder="强化加成" />
             </div>
@@ -110,7 +110,7 @@
                   <option value="kangbao-washed">洗练的抗暴</option>
                 </select>
                 <span class="input-group-addon">:</span>
-                <input type="tel" name="first-gamma-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <input type="tel" name="first-gamma-yuanshi" value="" class="form-control" placeholder="基础数值" />
                 <span class="input-group-addon">+</span>
                 <input type="tel" name="first-gamma-jiacheng" value="" class="form-control" placeholder="强化加成" />
             </div>
@@ -135,7 +135,7 @@
                   <option value="kangbao-washed">洗练的抗暴</option>
                 </select>
                 <span class="input-group-addon">:</span>
-                <input type="tel" name="second-alpha-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <input type="tel" name="second-alpha-yuanshi" value="" class="form-control" placeholder="基础数值" />
                 <span class="input-group-addon">+</span>
                 <input type="tel" name="second-alpha-jiacheng" value="" class="form-control" placeholder="强化加成" />
             </div>
@@ -157,7 +157,7 @@
                   <option value="kangbao-washed">洗练的抗暴</option>
                 </select>
                 <span class="input-group-addon">:</span>
-                <input type="tel" name="second-beta-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <input type="tel" name="second-beta-yuanshi" value="" class="form-control" placeholder="基础数值" />
                 <span class="input-group-addon">+</span>
                 <input type="tel" name="second-beta-jiacheng" value="" class="form-control" placeholder="强化加成" />
             </div>
@@ -179,7 +179,7 @@
                   <option value="kangbao-washed">洗练的抗暴</option>
                 </select>
                 <span class="input-group-addon">:</span>
-                <input type="tel" name="second-gamma-yuanshi" value="" class="form-control" placeholder="原始数值" />
+                <input type="tel" name="second-gamma-yuanshi" value="" class="form-control" placeholder="基础数值" />
                 <span class="input-group-addon">+</span>
                 <input type="tel" name="second-gamma-jiacheng" value="" class="form-control" placeholder="强化加成" />
             </div>
@@ -212,7 +212,7 @@
           <div class="modal-body-result"></div>
           <div class="modal-body-promo text-center">
             <p>&nbsp;</p>
-            <p>喜欢吗？扫码帮作者众筹暗部鼬</p>
+            <p>有用吗？扫码帮作者众筹暗部鼬</p>
             <p><img src="/images/qr-money.png" /></p>
           </div>
         </div>
@@ -228,8 +228,12 @@
           <h4 class="modal-title">原理讲解</h4>
         </div>
         <div class="modal-body">
+          <p class="text-center"><strong>饰品战力是如何计算的？</strong></p>
+          <p>作者于 09-24 根据 iOS 微信 20 区的 6 位玩家的战力、生命、攻击、防御、暴击、抗暴进行五元一次方程组求解得出以下公式，也是本工具的核心：</p>
           <p>战力 = 生命 * 1.0015 + 攻击 * 3.4999 + 防御 * 11.5902 + 暴击 * 5.9982 + 抗暴 * 10.0178</p>
-          <p>以上公式由作者对 iOS 微信 20 区的 6 位忍者的战力、生命、攻击、防御、暴击、抗暴进行五元一次方程组求解得出。</p>
+          <p>&nbsp;</p>
+          <p class="text-center"><strong>什么是「保底战力」？</strong></p>
+          <p>假设相同秘境的两个饰品的最差属性（或洗练属性）都可以洗成最强暴击，那么同时去掉强化加成和这两个最强暴击后，可以得到「保底战力」，这是最能真实反映两个饰品之间差距的方法。</p>
           <p>&nbsp;</p>
           <p class="text-center">有更好的算法？扫码和作者交流</p>
           <p class="text-center"><img src="/images/qr-profile.png" /></p>
@@ -317,6 +321,7 @@
           attribute.total = attribute.base + attribute.addition;
           attribute.totalPower = attribute.total * attribute.factor;
           attribute.basePower = attribute.base * attribute.factor;
+          attribute.additionPower = attribute.addition * attribute.factor;
 
           totalPower += attribute.totalPower;
           basePower += attribute.basePower;
@@ -333,18 +338,20 @@
           return prev.basePower < cur.basePower ? prev : cur;
         });
 
+        var washedCount = tempTypeStr.split('washed').length - 1;
+        var specialPower = washedCount > 0 ? washedAttribute.basePower : worstAttribute.basePower;
+
         accessory.meta = {
           totalPower: totalPower,
           basePower: basePower,
 
           noneCount: tempTypeStr.split('none').length - 1,
-          washedCount: tempTypeStr.split('washed').length - 1,
+          washedCount: washedCount,
 
           washedIndex: accessory.attributes.indexOf(washedAttribute),
           worstIndex: accessory.attributes.indexOf(worstAttribute),
 
-          noWashedBasePower: washedAttribute ? basePower - washedAttribute.basePower : basePower,
-          noWorstBasePower: worstAttribute ? basePower - worstAttribute.basePower : basePower,
+          lowestPower: basePower - specialPower
         };
 
         return accessory;
@@ -352,6 +359,21 @@
 
       function formatNumber(number) {
         return number.toFixed(0);
+      }
+
+      function generateAccessoryAttributesSentence(accessory) {
+        var sentences = [];
+        sentences.push(accessory.name + '：');
+
+        accessory.attributes.forEach(function (attr) {
+          var additionStr = !attr.addition ? '' : '+' + attr.addition;
+          sentences.push('－' + attr.name + '（' + attr.base + additionStr + '）的战力：' + formatNumber(attr.totalPower));
+        });
+
+        sentences.push('－合计战力：' + formatNumber(accessory.meta.totalPower));
+        sentences.push('－保底战力：' + formatNumber(accessory.meta.lowestPower));
+
+        return sentences;
       }
 
       $buttonDemo.on('click', function (e) {
@@ -424,49 +446,17 @@
         }
 
         var sentences = [];
-        sentences.push('第一个饰品的当前战力：' + formatNumber(firstAccessory.meta.totalPower));
-        sentences.push('第二个饰品的当前战力：' + formatNumber(secondAccessory.meta.totalPower));
+        sentences.push.apply(sentences, generateAccessoryAttributesSentence(firstAccessory));
+        sentences.push('');
+        sentences.push.apply(sentences, generateAccessoryAttributesSentence(secondAccessory));
         sentences.push('');
 
-        var firstAttrType;
-        var firstComparePower;
-
-        if (firstAccessory.meta.washedCount > 0) {
-          firstAttrType = '洗练属性';
-          firstComparePower = firstAccessory.meta.noWashedBasePower;
-        } else {
-          firstAttrType = '最差属性';
-          firstComparePower = firstAccessory.meta.noWorstBasePower;
-        }
-
-        var secondAttrType;
-        var secondComparePower;
-
-        if (secondAccessory.meta.washedCount > 0) {
-          secondAttrType = '洗练属性';
-          secondComparePower = secondAccessory.meta.noWashedBasePower;
-        } else {
-          secondAttrType = '最差属性';
-          secondComparePower = secondAccessory.meta.noWorstBasePower;
-        }
-
-        var conditionSentences = [
-          '（假设第一个饰品的' + firstAttrType,
-          '和第二个饰品的' + secondAttrType,
-          '都可以洗成最强暴击',
-          '那么同时去掉加成和这两个最强暴击后）'
-        ];
-
-        sentences.push(conditionSentences.join('，'));
-        sentences.push('');
-        sentences.push('第一个饰品不计强化的保底战力：' + formatNumber(firstComparePower));
-        sentences.push('第二个饰品不计强化的保底战力：' + formatNumber(secondComparePower));
-        sentences.push('');
+        var firstComparePower = firstAccessory.meta.lowestPower;
+        var secondComparePower = secondAccessory.meta.lowestPower;
 
         var betterAccessory = firstComparePower > secondComparePower ? firstAccessory : secondAccessory;
 
-        var accessorySelectComment;
-        accessorySelectComment = betterAccessory.name + '，保底战力领先 ' + formatNumber(Math.abs(firstComparePower - secondComparePower));
+        var accessorySelectComment = betterAccessory.name + '，保底战力领先 ' + formatNumber(Math.abs(firstComparePower - secondComparePower));
 
         var accessoryWashComment;
         if (betterAccessory.meta.washedCount > 0) {
@@ -475,7 +465,7 @@
           accessoryWashComment = '将' + betterAccessory.attributes[betterAccessory.meta.worstIndex].name + '（最差属性）洗成最强暴击';
         }
 
-        sentences.push('（以下建议仅供参考）');
+        sentences.push('（点「原理讲解」告诉你什么是保底战力）');
         sentences.push('');
         sentences.push('选择建议：' + accessorySelectComment);
         sentences.push('洗练建议：' + accessoryWashComment);
@@ -484,7 +474,7 @@
         $resultModal.modal();
       });
 
-      $('button').prop('disabled', false);
+      $buttonSubmit.prop('disabled', false);
     });
   </script>
 
