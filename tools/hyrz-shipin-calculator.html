@@ -49,7 +49,7 @@
     <form>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group text-center">请输入第一个饰品的相关数据</div>
+          <div class="form-group text-center">第一个饰品的数据（必填）</div>
           <div class="form-group">
             <div class="input-group">
                 <select name="first-alpha-attr" class="form-control">
@@ -118,7 +118,7 @@
         </div>
 
         <div class="col-md-6">
-          <div class="form-group text-center">请输入第二个饰品的相关数据</div>
+          <div class="form-group text-center">第二个饰品的数据（选填）</div>
           <div class="form-group">
             <div class="input-group">
                 <select name="second-alpha-attr" class="form-control">
@@ -362,7 +362,11 @@
         return number.toFixed(0);
       }
 
-      function getAccessoryAttrsSentence(accessory) {
+      function getAttrsSentences(accessory, needLowest) {
+        if (accessory.meta.totalPower === 0) {
+          return [];
+        }
+
         var sentences = [];
         sentences.push(accessory.name + '：');
 
@@ -372,8 +376,12 @@
         });
 
         sentences.push('－合计战力：' + formatNumber(accessory.meta.totalPower));
-        sentences.push('－保底战力：' + formatNumber(accessory.meta.lowestPower));
 
+        if (needLowest) {
+          sentences.push('－保底战力：' + formatNumber(accessory.meta.lowestPower));
+        }
+
+        sentences.push('');
         return sentences;
       }
 
@@ -447,28 +455,30 @@
         }
 
         var sentences = [];
-        sentences.push.apply(sentences, getAccessoryAttrsSentence(firstAccessory));
-        sentences.push('');
-        sentences.push.apply(sentences, getAccessoryAttrsSentence(secondAccessory));
-        sentences.push('');
+        var isComparing = secondAccessory.meta.totalPower > 0;
 
-        var firstComparePower = firstAccessory.meta.lowestPower;
-        var secondComparePower = secondAccessory.meta.lowestPower;
-        var betterAccessory = firstComparePower > secondComparePower ? firstAccessory : secondAccessory;
+        sentences.push.apply(sentences, getAttrsSentences(firstAccessory, isComparing));
+        sentences.push.apply(sentences, getAttrsSentences(secondAccessory, isComparing));
 
-        var accessorySelectComment = betterAccessory.name + '，保底战力领先 ' + formatNumber(Math.abs(firstComparePower - secondComparePower));
+        if (isComparing) {
+          var firstComparePower = firstAccessory.meta.lowestPower;
+          var secondComparePower = secondAccessory.meta.lowestPower;
+          var betterAccessory = firstComparePower > secondComparePower ? firstAccessory : secondAccessory;
 
-        var accessoryWashComment;
-        if (betterAccessory.meta.washedCount > 0) {
-          accessoryWashComment = '继续洗练，洗出最强暴击';
-        } else {
-          accessoryWashComment = '将' + betterAccessory.attrs[betterAccessory.meta.worstIndex].name + '（最差属性）洗成最强暴击';
+          var accessorySelectComment = betterAccessory.name + '，保底战力领先 ' + formatNumber(Math.abs(firstComparePower - secondComparePower));
+
+          var accessoryWashComment;
+          if (betterAccessory.meta.washedCount > 0) {
+            accessoryWashComment = '继续洗练，洗出最强暴击';
+          } else {
+            accessoryWashComment = '将' + betterAccessory.attrs[betterAccessory.meta.worstIndex].name + '（最差属性）洗成最强暴击';
+          }
+
+          sentences.push('（点「原理讲解」告诉你什么是保底战力）');
+          sentences.push('');
+          sentences.push('选择建议：' + accessorySelectComment);
+          sentences.push('洗练建议：' + accessoryWashComment);
         }
-
-        sentences.push('（点「原理讲解」告诉你什么是保底战力）');
-        sentences.push('');
-        sentences.push('选择建议：' + accessorySelectComment);
-        sentences.push('洗练建议：' + accessoryWashComment);
 
         $resultModalBody.html(sentences.join('\n'));
         $resultModal.modal();
