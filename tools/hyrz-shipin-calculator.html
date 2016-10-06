@@ -212,7 +212,7 @@
           <div class="modal-body-result"></div>
           <div class="modal-body-promo text-center">
             <p>&nbsp;</p>
-            <p>有用吗？扫码帮作者众筹暗部鼬</p>
+            <p>有用吗？扫码众筹暗部鼬送作者</p>
             <p><img src="/images/qr-money.png" /></p>
           </div>
         </div>
@@ -371,8 +371,12 @@
         sentences.push(accessory.name + '：');
 
         accessory.attrs.forEach(function (attr) {
-          var additionStr = !attr.plus ? '' : '+' + attr.plus;
-          sentences.push('－' + attr.name + '（' + attr.base + additionStr + '）的战力：' + formatNumber(attr.totalPower));
+          var sentence = '－' + attr.name + '战力：' + formatNumber(attr.totalPower);
+          if (attr.plus) {
+            sentence += '，其中基础 ' + formatNumber(attr.basePower);
+          }
+
+          sentences.push(sentence);
         });
 
         sentences.push('－合计战力：' + formatNumber(accessory.meta.totalPower));
