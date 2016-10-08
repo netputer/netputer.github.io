@@ -51,7 +51,7 @@
             var output = [];
             for (var amount in result) {
                 var amountResult = result[amount];
-                output.push(amount + ' * ' + amountResult.length + ':');
+                output.push(amount.trim() + ' * ' + amountResult.length + ':');
 
                 amountResult.forEach(function (item) {
                     output.push(item);
