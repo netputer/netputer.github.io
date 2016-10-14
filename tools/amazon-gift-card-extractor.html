@@ -67,8 +67,7 @@
         }
 
         function process (e) {
-            // var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})\s+(.{0,2}[0-9\.\,]+.{0,2})\s/g);
-            var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})/g);
+            var regexResult = $content.value.match(/([0-9A-Z]{4}-[0-9A-Z]{6}-[0-9A-Z]{4})\s+(.{0,2}[0-9\.\,]+.{0,2})\s/g);
             var result = {};
 
             regexResult.forEach(function (item) {
@@ -82,7 +81,7 @@
             var output = [];
             for (var amount in result) {
                 var amountResult = result[amount];
-                // output.push(amount.trim() + ' * ' + amountResult.length + ':');
+                output.push(amount.trim() + ' * ' + amountResult.length + ':');
 
                 amountResult.forEach(function (item) {
                     output.push(item);
