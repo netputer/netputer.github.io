@@ -67,8 +67,8 @@
                 </select>
                 <span class="input-group-addon">:</span>
                 <input type="tel" name="first-alpha-base" value="" class="form-control" placeholder="基础数值" />
-                <span class="input-group-addon">+</span>
-                <input type="tel" name="first-alpha-plus" value="" class="form-control" placeholder="强化加成" />
+                <span class="input-group-addon hidden">+</span>
+                <input type="tel" name="first-alpha-plus" value="" class="form-control hidden" placeholder="强化加成" />
             </div>
           </div>
 
@@ -89,8 +89,8 @@
                 </select>
                 <span class="input-group-addon">:</span>
                 <input type="tel" name="first-beta-base" value="" class="form-control" placeholder="基础数值" />
-                <span class="input-group-addon">+</span>
-                <input type="tel" name="first-beta-plus" value="" class="form-control" placeholder="强化加成" />
+                <span class="input-group-addon hidden">+</span>
+                <input type="tel" name="first-beta-plus" value="" class="form-control hidden" placeholder="强化加成" />
             </div>
           </div>
 
@@ -111,8 +111,8 @@
                 </select>
                 <span class="input-group-addon">:</span>
                 <input type="tel" name="first-gamma-base" value="" class="form-control" placeholder="基础数值" />
-                <span class="input-group-addon">+</span>
-                <input type="tel" name="first-gamma-plus" value="" class="form-control" placeholder="强化加成" />
+                <span class="input-group-addon hidden">+</span>
+                <input type="tel" name="first-gamma-plus" value="" class="form-control hidden" placeholder="强化加成" />
             </div>
           </div>
         </div>
@@ -136,8 +136,8 @@
                 </select>
                 <span class="input-group-addon">:</span>
                 <input type="tel" name="second-alpha-base" value="" class="form-control" placeholder="基础数值" />
-                <span class="input-group-addon">+</span>
-                <input type="tel" name="second-alpha-plus" value="" class="form-control" placeholder="强化加成" />
+                <span class="input-group-addon hidden">+</span>
+                <input type="tel" name="second-alpha-plus" value="" class="form-control hidden" placeholder="强化加成" />
             </div>
           </div>
 
@@ -158,8 +158,8 @@
                 </select>
                 <span class="input-group-addon">:</span>
                 <input type="tel" name="second-beta-base" value="" class="form-control" placeholder="基础数值" />
-                <span class="input-group-addon">+</span>
-                <input type="tel" name="second-beta-plus" value="" class="form-control" placeholder="强化加成" />
+                <span class="input-group-addon hidden">+</span>
+                <input type="tel" name="second-beta-plus" value="" class="form-control hidden" placeholder="强化加成" />
             </div>
           </div>
 
@@ -180,8 +180,8 @@
                 </select>
                 <span class="input-group-addon">:</span>
                 <input type="tel" name="second-gamma-base" value="" class="form-control" placeholder="基础数值" />
-                <span class="input-group-addon">+</span>
-                <input type="tel" name="second-gamma-plus" value="" class="form-control" placeholder="强化加成" />
+                <span class="input-group-addon hidden">+</span>
+                <input type="tel" name="second-gamma-plus" value="" class="form-control hidden" placeholder="强化加成" />
             </div>
           </div>
         </div>
@@ -242,8 +242,8 @@
     </div>
   </div>
 
-  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.slim.min.js"></script>
-  <script src="//cdn.bootcss.com/bootstrap/3.2.0/js/modal.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.slim.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.2.0/js/modal.min.js"></script>
 
   <script type="text/javascript">
     $(function () {
@@ -392,22 +392,22 @@
       $buttonDemo.on('click', function (e) {
         $firstAlphaAttr.val('baoji-washed');
         $firstAlphaBase.val('3226');
-        $firstAlphaPlus.val('2904');
+        // $firstAlphaPlus.val('2904');
         $firstBetaAttr.val('fangyu');
         $firstBetaBase.val('807');
-        $firstBetaPlus.val('727');
+        // $firstBetaPlus.val('727');
         $firstGammaAttr.val('fangyu');
         $firstGammaBase.val('747');
-        $firstGammaPlus.val('673');
+        // $firstGammaPlus.val('673');
         $secondAlphaAttr.val('baoji');
         $secondAlphaBase.val('3017');
-        $secondAlphaPlus.val('');
+        // $secondAlphaPlus.val('');
         $secondBetaAttr.val('baoji-washed');
         $secondBetaBase.val('3149');
-        $secondBetaPlus.val('');
+        // $secondBetaPlus.val('');
         $secondGammaAttr.val('fangyu');
         $secondGammaBase.val('799');
-        $secondGammaPlus.val('');
+        // $secondGammaPlus.val('');
       });
 
       $buttonTheory.on('click', function () {
