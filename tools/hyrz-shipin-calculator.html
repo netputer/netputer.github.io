@@ -201,6 +201,21 @@
     </form>
   </div>
 
+  <div class="modal fade" id="promo-modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <p>暗部鼬都要下架了</p>
+          <p>然而作者却没钱招募</p>
+          <p>如果你觉得这个工具好用</p>
+          <p>不妨扫个码</p>
+          <p>赞助作者一个暗部鼬碎片</p>
+          <p><img src="/images/qr-money.png" /></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="result-modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -284,6 +299,7 @@
       var $buttonTheory = $('#button-theory');
       var $buttonSubmit = $('#button-submit');
       var $buttonDemo = $('#button-demo');
+      var $promoModal = $('#promo-modal');
       var $theoryModal = $('#theory-modal');
       var $resultModal = $('#result-modal');
       var $resultModalBody = $('#result-modal .modal-body-result');
@@ -489,6 +505,8 @@
       });
 
       $buttonSubmit.prop('disabled', false);
+
+      $promoModal.modal();
     });
   </script>
 
